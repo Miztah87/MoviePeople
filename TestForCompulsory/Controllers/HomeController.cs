@@ -10,7 +10,6 @@ namespace TestForCompulsory.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Yes";
             return View();
         }
 
