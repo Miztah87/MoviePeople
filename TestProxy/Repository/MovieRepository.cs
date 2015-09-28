@@ -16,7 +16,7 @@ namespace TestProxy.Repository
         /// <returns></returns>
         public List<Movie> ReadAll()
         {
-            using (var ctx = new ShopContextConnection())
+            using (var ctx = new  SeedDbContext())
             {
                 return ctx.Movies.ToList();
             }
@@ -38,6 +38,16 @@ namespace TestProxy.Repository
                 //var thisMovie =  ctx.Movies.Where(x => x.Id == movie.Id).FirstOrDefault();
                 ctx.Movies.Remove(movie);
                 ctx.SaveChanges();
+            }
+        }
+
+        
+        public void Edit(Movie movie)
+        {
+            using (var ctx = new ShopContextConnection())
+            {
+                              
+
             }
         }
     }
