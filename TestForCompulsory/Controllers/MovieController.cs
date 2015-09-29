@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TestProxy;
@@ -39,6 +40,21 @@ namespace TestForCompulsory.Controllers
                 return HttpNotFound();
             }
             return RedirectToAction("Index", "Movie");
+
+        }
+
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            
+           
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Edit(Movie movie)
+        {
+            facade.GetMovieRepository().Edit(movie);
+            return Redirect("Index");
 
         }
     }

@@ -8,7 +8,7 @@ using TestProxy.DomainModel;
 
 namespace TestProxy.Context
 {
-    class ShopContextConnection : DbContext
+   public class ShopContextConnection : DbContext
     {
         public ShopContextConnection(): 
             base("name=MovieShopDBConnectionString") { }
