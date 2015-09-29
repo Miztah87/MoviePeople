@@ -241,11 +241,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Movie\Create.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Genres\Create.cshtml" />
     <Content Include="Views\Genres\Delete.cshtml" />
     <Content Include="Views\Genres\Details.cshtml" />
     <Content Include="Views\Genres\Edit.cshtml" />
     <Content Include="Views\Genres\Index.cshtml" />
+=======
+    <Content Include="Views\Movie\Edit.cshtml" />
+>>>>>>> 719926eefb853e766abef769b11ce4c0cdf00f29
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
