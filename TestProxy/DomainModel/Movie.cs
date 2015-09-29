@@ -14,13 +14,13 @@ namespace TestProxy.DomainModel
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Tinkywinky")]
+       
         [StringLength(15)]
         public string Title { get; set; }
         [DataType("Date")]
-
+        //[Range(1, 9000)]
         public DateTime Year { get; set; }
-        [Range(1, 9000)]
+        
         public double Price { get; set; }
     }
 }
