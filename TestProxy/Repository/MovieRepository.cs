@@ -43,12 +43,9 @@ namespace TestProxy.Repository
 
         
         public void Edit(Movie movie)
-        {
-            using (var ctx = new ShopContextConnection())
-            {
-                              
+        {             
 
-            }
+           
         }
     }
 }

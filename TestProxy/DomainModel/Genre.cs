@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestProxy.DomainModel
 {
-    class Genre
+   public class Genre
     {
         [Key]
         public int Id { get; set; }
