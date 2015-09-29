@@ -5,6 +5,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TestProxy;
+using TestProxy.Context;
 using TestProxy.DomainModel;
 
 namespace TestForCompulsory.Controllers
@@ -12,6 +13,7 @@ namespace TestForCompulsory.Controllers
     public class MovieController : Controller
     {
         private Facade facade = new Facade();
+        private ShopContextConnection db = new ShopContextConnection();
         // GET: Movie
         public ActionResult Index()
         {
@@ -44,11 +46,22 @@ namespace TestForCompulsory.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+
+
             
-           
-            return View();
         }
         [HttpPost]
         public ActionResult Edit(Movie movie)

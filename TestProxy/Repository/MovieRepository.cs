@@ -47,6 +47,7 @@ namespace TestProxy.Repository
             using (var ctx = new ShopContextConnection())
             {
                 var thisMovie = ctx.Movies.Where(x => x.Id == movie.Id).FirstOrDefault();
+                
                 var entry = ctx.Entry(thisMovie);
                 entry.Property(e => e.Title).IsModified = true;
                 entry.Property(e => e.Price).IsModified = true;
