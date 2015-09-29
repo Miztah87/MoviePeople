@@ -48,6 +48,7 @@ namespace TestForCompulsory.Controllers
         [HttpGet]
         public ActionResult Edit(int? id)
         {
+<<<<<<< HEAD
 
             if (id == null)
             {
@@ -62,6 +63,9 @@ namespace TestForCompulsory.Controllers
 
 
             
+=======
+            return View();
+>>>>>>> MovieController ConnectionString
         }
         [HttpPost]
         public ActionResult Edit(Movie movie)
