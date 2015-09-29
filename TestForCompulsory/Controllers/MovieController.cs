@@ -42,9 +42,7 @@ namespace TestForCompulsory.Controllers
             return RedirectToAction("Index", "Movie");
 
         }
-<<<<<<< HEAD
 
-=======
         [HttpGet]
         public ActionResult Edit()
         {
@@ -59,6 +57,5 @@ namespace TestForCompulsory.Controllers
             return Redirect("Index");
 
         }
->>>>>>> 719926eefb853e766abef769b11ce4c0cdf00f29
     }
 }

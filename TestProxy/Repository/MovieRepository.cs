@@ -8,7 +8,7 @@ using TestProxy.DomainModel;
 
 namespace TestProxy.Repository
 {
-   public class MovieRepository
+    public class MovieRepository
     {
         /// <summary>
         /// 
@@ -41,11 +41,8 @@ namespace TestProxy.Repository
             }
         }
 
-        
+
         public void Edit(Movie movie)
-<<<<<<< HEAD
-        {             
-=======
         {
             using (var ctx = new ShopContextConnection())
             {
@@ -57,11 +54,7 @@ namespace TestProxy.Repository
                 entry.Property(e => e.Year).IsModified = true;
 
                 ctx.SaveChanges();
->>>>>>> 719926eefb853e766abef769b11ce4c0cdf00f29
-
-           
+            }
         }
-
-      
     }
 }
