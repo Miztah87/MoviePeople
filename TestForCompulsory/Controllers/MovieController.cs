@@ -62,7 +62,6 @@ namespace TestForCompulsory.Controllers
             return View(movie);
 
 
-            
         }
         [HttpPost]
         public ActionResult Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)

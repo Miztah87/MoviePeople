@@ -10,6 +10,7 @@ namespace TestProxy
    public class Facade
     {
         private MovieRepository movieRepo;
+        private GenreRepository genresRepo;
 
         public MovieRepository GetMovieRepository()
         {
@@ -18,6 +19,14 @@ namespace TestProxy
                 movieRepo = new MovieRepository();
             }
             return movieRepo;
+        }
+        public GenreRepository GetGenresRepository()
+        {
+            if (genresRepo == null)
+            {
+                genresRepo = new GenreRepository();
+            }
+            return genresRepo;
         }
     }
 }
