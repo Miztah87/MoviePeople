@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -61,13 +62,22 @@ namespace TestForCompulsory.Controllers
             return View(movie);
 
 
-            
         }
         [HttpPost]
-        public ActionResult Edit(Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)
         {
-            facade.GetMovieRepository().Edit(movie);
-            return Redirect("Index");
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(movie).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(movie);
+
+
+            //facade.GetMovieRepository().Edit(movie);
+            //return Redirect("Index");
 
         }
     }
