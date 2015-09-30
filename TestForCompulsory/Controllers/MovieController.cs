@@ -80,5 +80,14 @@ namespace TestForCompulsory.Controllers
             //return Redirect("Index");
 
         }
+
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            string path = Server.MapPath("~/Images/" + file.FileName);
+            file.SaveAs(path);
+            ViewBag.Path = path;
+            return View();
+        }
+
     }
 }
