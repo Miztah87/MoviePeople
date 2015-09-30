@@ -42,20 +42,16 @@ namespace TestProxy.Repository
         }
 
 
-        public void Edit(Movie movie)
-        {
-            using (var ctx = new ShopContextConnection())
-            {
-                var thisMovie = ctx.Movies.Where(x => x.Id == movie.Id).FirstOrDefault();
-                
-                var entry = ctx.Entry(thisMovie);
-                entry.Property(e => e.Title).IsModified = true;
-                entry.Property(e => e.Price).IsModified = true;
-                // Problem with DateTime2 ?!? whut?!?
-                entry.Property(e => e.Year).IsModified = true;
+        //public void Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)
+        //{
 
-                ctx.SaveChanges();
-            }
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        ctx.Entry(movie).State = EntityState.Modified;
+        //        ctx.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //}
     }
 }

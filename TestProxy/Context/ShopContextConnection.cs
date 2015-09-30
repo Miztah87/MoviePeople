@@ -15,5 +15,6 @@ namespace TestProxy.Context
 
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Genre> genres { get; set; }
+       
     }
 }

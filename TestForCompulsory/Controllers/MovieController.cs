@@ -28,8 +28,9 @@ namespace TestForCompulsory.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Movie movie)
+        public ActionResult Create(Movie movie, HttpPostedFileBase upload)
         {
+            
             facade.GetMovieRepository().Add(movie);
             return Redirect("Index");
         }

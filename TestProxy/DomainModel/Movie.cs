@@ -19,8 +19,10 @@ namespace TestProxy.DomainModel
         public string Title { get; set; }
         [DataType("Date")]
         //[Range(1, 9000)]
-        public DateTime Year { get; set; }
-        
+        public DateTime Year { get; set; }        
         public double Price { get; set; }
+
+        
+
     }
 }

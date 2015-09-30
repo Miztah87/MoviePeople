@@ -52,6 +52,9 @@
     <Compile Include="Context\MovieShopDbInitializer.cs" />
     <Compile Include="Context\SeedDbContext.cs" />
     <Compile Include="Context\ShopContextConnection.cs" />
+    <Compile Include="DomainModel\FilePath.cs" />
+    <Compile Include="DomainModel\Files.cs" />
+    <Compile Include="DomainModel\FileType.cs" />
     <Compile Include="DomainModel\Genre.cs" />
     <Compile Include="DomainModel\Movie.cs" />
     <Compile Include="Facade.cs" />
