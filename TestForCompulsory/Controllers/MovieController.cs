@@ -28,9 +28,10 @@ namespace TestForCompulsory.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Movie movie, HttpPostedFileBase upload)
+        public ActionResult Create(Movie movie, HttpPostedFileBase file)
         {
-            
+            string path = Server.MapPath("~/Images/" + file.FileName);
+            file.SaveAs(path);
             facade.GetMovieRepository().Add(movie);
             return Redirect("Index");
         }
@@ -44,7 +45,6 @@ namespace TestForCompulsory.Controllers
                 return HttpNotFound();
             }
             return RedirectToAction("Index", "Movie");
-
         }
 
         [HttpGet]
@@ -61,9 +61,6 @@ namespace TestForCompulsory.Controllers
                 return HttpNotFound();
             }
             return View(movie);
-
-
-            
         }
         [HttpPost]
         public ActionResult Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)
@@ -82,5 +79,7 @@ namespace TestForCompulsory.Controllers
             //return Redirect("Index");
 
         }
+
+      
     }
 }

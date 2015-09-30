@@ -22,7 +22,6 @@ namespace TestProxy.DomainModel
         public DateTime Year { get; set; }        
         public double Price { get; set; }
 
-        
-
+        public virtual Genre Genre { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TestProxy;
 using TestProxy.Context;
 using TestProxy.DomainModel;
 
@@ -15,10 +16,11 @@ namespace TestForCompulsory.Controllers
     {
         private ShopContextConnection db = new ShopContextConnection();
 
+        private Facade facade = new Facade();
         // GET: Genres
         public ActionResult Index()
         {
-            return View(db.genres.ToList());
+            return View(facade.GetGenresRepository().ReadAll());
         }
 
         // GET: Genres/Details/5
@@ -28,7 +30,7 @@ namespace TestForCompulsory.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Genre genre = db.genres.Find(id);
+            Genre genre = db.Genres.Find(id);
             if (genre == null)
             {
                 return HttpNotFound();
@@ -51,7 +53,7 @@ namespace TestForCompulsory.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.genres.Add(genre);
+                db.Genres.Add(genre);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +68,7 @@ namespace TestForCompulsory.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Genre genre = db.genres.Find(id);
+            Genre genre = db.Genres.Find(id);
             if (genre == null)
             {
                 return HttpNotFound();
@@ -97,7 +99,7 @@ namespace TestForCompulsory.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Genre genre = db.genres.Find(id);
+            Genre genre = db.Genres.Find(id);
             if (genre == null)
             {
                 return HttpNotFound();
@@ -110,8 +112,8 @@ namespace TestForCompulsory.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Genre genre = db.genres.Find(id);
-            db.genres.Remove(genre);
+            Genre genre = db.Genres.Find(id);
+            db.Genres.Remove(genre);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

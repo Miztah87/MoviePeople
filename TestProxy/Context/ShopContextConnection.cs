@@ -14,7 +14,7 @@ namespace TestProxy.Context
             base("name=MovieShopDBConnectionString") { }
 
         public DbSet<Movie> Movies { get; set; }
-        public DbSet<Genre> genres { get; set; }
-       
+
+        public DbSet<Genre> Genres { get; set; }
     }
 }
