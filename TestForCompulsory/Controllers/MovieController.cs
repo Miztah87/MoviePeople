@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -32,6 +33,7 @@ namespace TestForCompulsory.Controllers
         {
             string path = Server.MapPath("~/Images/" + file.FileName);
             file.SaveAs(path);
+
             facade.GetMovieRepository().Add(movie);
             return Redirect("Index");
         }
