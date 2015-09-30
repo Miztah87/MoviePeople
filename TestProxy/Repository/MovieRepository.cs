@@ -42,7 +42,7 @@ namespace TestProxy.Repository
         }
 
 
-<<<<<<< HEAD
+
         //public void Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)
         //{
 
@@ -54,7 +54,7 @@ namespace TestProxy.Repository
         //    }
 
         //}
-=======
+
         public void Edit(Movie movie)
         {
             using (var ctx = new ShopContextConnection())
@@ -70,6 +70,6 @@ namespace TestProxy.Repository
                 ctx.SaveChanges();
             }
         }
->>>>>>> 91c9423e5047fcbc09d30ba7f193cd691218bc9b
+
     }
 }

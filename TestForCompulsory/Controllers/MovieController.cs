@@ -31,9 +31,7 @@ namespace TestForCompulsory.Controllers
         [HttpPost]
         public ActionResult Create(Movie movie, HttpPostedFileBase file)
         {
-            string path = Server.MapPath("~/Images/" + file.FileName);
-            file.SaveAs(path);
-
+           
             facade.GetMovieRepository().Add(movie);
             return Redirect("Index");
         }
@@ -82,9 +80,6 @@ namespace TestForCompulsory.Controllers
 
         }
 
-<<<<<<< HEAD
-      
-=======
         public ActionResult Upload(HttpPostedFileBase file)
         {
             string path = Server.MapPath("~/Images/" + file.FileName);
@@ -93,6 +88,6 @@ namespace TestForCompulsory.Controllers
             return View();
         }
 
->>>>>>> 91c9423e5047fcbc09d30ba7f193cd691218bc9b
+
     }
 }
