@@ -18,6 +18,8 @@ namespace TestProxy.DomainModel
         [StringLength(15)]
         public string Title { get; set; }
         [DataType("Date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+       
         //[Range(1, 9000)]
         public DateTime Year { get; set; }
         
