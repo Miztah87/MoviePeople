@@ -247,11 +247,18 @@
     <Content Include="Views\Genres\Edit.cshtml" />
     <Content Include="Views\Genres\Index.cshtml" />
     <Content Include="Views\Movie\Edit.cshtml" />
+<<<<<<< HEAD
+=======
+    <Content Include="Views\Movie\Upload.cshtml" />
+>>>>>>> 91c9423e5047fcbc09d30ba7f193cd691218bc9b
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
+<<<<<<< HEAD
     <Folder Include="Views\File\" />
+=======
+>>>>>>> 91c9423e5047fcbc09d30ba7f193cd691218bc9b
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

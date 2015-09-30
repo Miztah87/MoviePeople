@@ -42,6 +42,7 @@ namespace TestProxy.Repository
         }
 
 
+<<<<<<< HEAD
         //public void Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)
         //{
 
@@ -53,5 +54,22 @@ namespace TestProxy.Repository
         //    }
 
         //}
+=======
+        public void Edit(Movie movie)
+        {
+            using (var ctx = new ShopContextConnection())
+            {
+                var thisMovie = ctx.Movies.Where(x => x.Id == movie.Id).FirstOrDefault();
+                
+                var entry = ctx.Entry(thisMovie);
+                entry.Property(e => e.Title).IsModified = true;
+                entry.Property(e => e.Price).IsModified = true;
+                // Problem with DateTime2 ?!? whut?!?
+                entry.Property(e => e.Year).IsModified = true;
+                
+                ctx.SaveChanges();
+            }
+        }
+>>>>>>> 91c9423e5047fcbc09d30ba7f193cd691218bc9b
     }
 }

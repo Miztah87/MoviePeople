@@ -65,7 +65,7 @@ namespace TestForCompulsory.Controllers
             return View(movie);
         }
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url")] Movie movie)
         {
 
             if (ModelState.IsValid)
@@ -82,6 +82,17 @@ namespace TestForCompulsory.Controllers
 
         }
 
+<<<<<<< HEAD
       
+=======
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            string path = Server.MapPath("~/Images/" + file.FileName);
+            file.SaveAs(path);
+            ViewBag.Path = path;
+            return View();
+        }
+
+>>>>>>> 91c9423e5047fcbc09d30ba7f193cd691218bc9b
     }
 }
