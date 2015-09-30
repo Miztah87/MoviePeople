@@ -26,5 +26,7 @@ namespace TestProxy.DomainModel
         public double Price { get; set; }
 
         public virtual Genre Genre { get; set; }
+
+        public String url { get; set;  }
     }
 }
