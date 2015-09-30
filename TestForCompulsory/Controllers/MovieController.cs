@@ -64,7 +64,7 @@ namespace TestForCompulsory.Controllers
 
         }
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url")] Movie movie)
         {
 
             if (ModelState.IsValid)

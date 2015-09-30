@@ -53,7 +53,7 @@ namespace TestProxy.Repository
                 entry.Property(e => e.Price).IsModified = true;
                 // Problem with DateTime2 ?!? whut?!?
                 entry.Property(e => e.Year).IsModified = true;
-
+                
                 ctx.SaveChanges();
             }
         }
