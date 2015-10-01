@@ -1,5 +1,7 @@
 ﻿@model TestProxy.DomainModel.Movie
 
+@*@model IEnumerable<TestProxy.DomainModel.Movie>*@
+
 @{
     ViewBag.Title = "Details";
 }
@@ -7,51 +9,62 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Movie</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
+            <th>
+                @Html.DisplayNameFor(model => model.url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.Year)
-        </dd>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            
+            <th></th>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+        
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.url)
-        </dt>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Title)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.url)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+                <td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+                    <iframe width="560" height="315" src="@Model.url" frameborder="0" allowfullscreen></iframe>
+                </td>
 
-    </dl>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => modelItem.Price)
+                </td>
+                
+
+            </tr>
+
+       
+    </table>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
