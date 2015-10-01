@@ -63,7 +63,7 @@ namespace TestForCompulsory.Controllers
             return View(movie);
         }
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl")] Movie movie)
         {
 
             if (ModelState.IsValid)
