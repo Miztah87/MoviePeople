@@ -27,5 +27,6 @@ namespace TestProxy.DomainModel
         public virtual Genre Genre { get; set; }
 
         public String url { get; set;  }
+        public String Description { get; set; }
     }
 }
