@@ -28,5 +28,7 @@ namespace TestProxy.DomainModel
 
         public String url { get; set;  }
         public String Description { get; set; }
+
+        public string MovieCoverUrl { get; set; }
     }
 }

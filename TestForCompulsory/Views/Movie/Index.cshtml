@@ -18,6 +18,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.MovieCoverUrl)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
@@ -36,7 +39,7 @@
 
     <tr>
         <td>
-            <iframe width="560" height="315" src="@item.url" frameborder="0" allowfullscreen></iframe>
+            <img src="@item.MovieCoverUrl" width="200" />
            
         </td>
         <td>
