@@ -42,6 +42,19 @@ namespace TestProxy.Repository
         }
 
 
+
+        //public void Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)
+        //{
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        ctx.Entry(movie).State = EntityState.Modified;
+        //        ctx.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //}
+
         public void Edit(Movie movie)
         {
             using (var ctx = new ShopContextConnection())
@@ -53,9 +66,10 @@ namespace TestProxy.Repository
                 entry.Property(e => e.Price).IsModified = true;
                 // Problem with DateTime2 ?!? whut?!?
                 entry.Property(e => e.Year).IsModified = true;
-
+                
                 ctx.SaveChanges();
             }
         }
+
     }
 }

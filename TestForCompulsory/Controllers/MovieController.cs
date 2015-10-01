@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -28,8 +29,9 @@ namespace TestForCompulsory.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Movie movie)
+        public ActionResult Create(Movie movie, HttpPostedFileBase file)
         {
+           
             facade.GetMovieRepository().Add(movie);
             return Redirect("Index");
         }
@@ -43,7 +45,6 @@ namespace TestForCompulsory.Controllers
                 return HttpNotFound();
             }
             return RedirectToAction("Index", "Movie");
-
         }
 
         [HttpGet]
@@ -60,11 +61,9 @@ namespace TestForCompulsory.Controllers
                 return HttpNotFound();
             }
             return View(movie);
-
-
         }
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url")] Movie movie)
         {
 
             if (ModelState.IsValid)
@@ -80,5 +79,29 @@ namespace TestForCompulsory.Controllers
             //return Redirect("Index");
 
         }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            string path = Server.MapPath("~/Images/" + file.FileName);
+            file.SaveAs(path);
+            ViewBag.Path = path;
+            return View();
+        }
+
+
     }
 }
