@@ -1,6 +1,7 @@
-﻿using TestProxy.DomainModel;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using TestProxy.DomainModel;
 
-namespace TestForCompulsory.Models
+namespace TestProxy.DomainModel
 {
     public class OrderLine
     {
