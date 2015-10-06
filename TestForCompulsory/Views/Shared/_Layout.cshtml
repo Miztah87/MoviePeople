@@ -10,6 +10,8 @@
     <link href="~/Content/push-menu.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>    
+   
 </head>
 <body class="pushmenu-push">
 
@@ -22,12 +24,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div>
-                    <div class="col-sm-2" style="padding-top:14px;">
-                        <i class="fa fa-film" style="color:beige; "></i>
-                    </div>
-                    <div class="col-sm-10">
-                        @Html.ActionLink("MoviePeople", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                    </div>
+                    
+                        @Html.ActionLink("MoviePeople", "Index", "Home", new { area = "" }, new { @class = "navbar-brand movieLogo" })
+                   
                 </div>
                  
             </div>
@@ -54,8 +53,8 @@
                     <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
                 </footer>
             </div>
-
    
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
