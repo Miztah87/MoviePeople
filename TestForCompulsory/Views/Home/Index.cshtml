@@ -102,7 +102,7 @@
         </div><!-- /Slide1 -->
            
                 <div class="item">
-                     @foreach (var item in Model.Skip(4))
+                     @foreach (var item in Model.Skip(4).Take(4))
                      {
                         <ul class="thumbnails">
                             <li class="col-sm-3 ">
@@ -150,162 +150,46 @@
     <div class="carousel slide" id="newestMovies">
         <div class="carousel-inner">
             <div class="item active">
+            @foreach (var item in Model.OrderByDescending(a => a.Year).Take(4))
+            {
                 <ul class="thumbnails">
                     <li class="col-sm-3 movieSlideBorder">
                         <div class="fff">
                             <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                <a href="#"><img src="@item.MovieCoverUrl" alt=""></a>
                             </div>
                             <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
+                                <h4>@item.Title</h4>
+                                <p>@item.Description</p>
                                 <a class="btn btn-mini" href="#">» Read More</a>
                             </div>
                         </div>
                     </li>
-                    <li class="col-sm-3 movieSlideBorder">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-sm-3 movieSlideBorder">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-sm-3 movieSlideBorder msbLast">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
+                    
                 </ul>
+            }
             </div><!-- /Slide1 -->
             <div class="item">
+            @foreach (var item in Model.OrderByDescending(a => a.Year).Skip(4).Take(4))
+            {
                 <ul class="thumbnails">
                     <li class="col-sm-3 movieSlideBorder">
                         <div class="fff">
                             <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
+                                <a href="#"><img src="@item.MovieCoverUrl" alt=""></a>
                             </div>
                             <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
+                                <h4>@item.Title</h4>
+                                <p>@item.Description</p>
                                 <a class="btn btn-mini" href="#">» Read More</a>
                             </div>
                         </div>
                     </li>
-                    <li class="col-sm-3 movieSlideBorder">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-sm-3 movieSlideBorder">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-sm-3 movieSlideBorder msbLast">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
+                    
                 </ul>
+            }
             </div><!-- /Slide2 -->
-            <div class="item">
-                <ul class="thumbnails">
-                    <li class="col-sm-3 movieSlideBorder">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-sm-3 movieSlideBorder">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-sm-3 movieSlideBorder">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="col-sm-3 movieSlideBorder msbLast">
-                        <div class="fff">
-                            <div class="thumbnail">
-                                <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                            </div>
-                            <div class="caption">
-                                <h4>Praesent commodo</h4>
-                                <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                <a class="btn btn-mini" href="#">» Read More</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div><!-- /Slide3 -->
-
+      
 
 
             <nav>
