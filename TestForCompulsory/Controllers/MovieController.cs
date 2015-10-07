@@ -12,11 +12,12 @@ using TestProxy.DomainModel;
 
 namespace TestForCompulsory.Controllers
 {
-    public class MovieController : Controller
+    public class MovieController : Controller 
     {
         private Facade facade = new Facade();
         private ShopContextConnection db = new ShopContextConnection();
         // GET: Movie
+        [Authorize]
         public ActionResult Index()
         {
             List<Movie> movies = facade.GetMovieRepository().ReadAll();
