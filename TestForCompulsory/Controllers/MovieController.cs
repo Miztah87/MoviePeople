@@ -19,6 +19,7 @@ namespace TestForCompulsory.Controllers
         private Facade facade = new Facade();
         private ShopContextConnection db = new ShopContextConnection();
         // GET: Movie
+        [Authorize]
         public ActionResult Index()
         {
 
