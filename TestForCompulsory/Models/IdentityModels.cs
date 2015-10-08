@@ -21,7 +21,7 @@ namespace TestForCompulsory.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("name=MovieShopDBConnectionString", throwIfV1Schema: false)
         {
         }
 

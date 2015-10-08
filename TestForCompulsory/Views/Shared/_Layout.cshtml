@@ -14,7 +14,6 @@
    
 </head>
 <body class="pushmenu-push">
-
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#3c3c3c;">
         <div class="container">
             <div class="navbar-header">
@@ -37,14 +36,18 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Movies", "Index", "Movie")</li>
-                  
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
+                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                    }
                 </ul>
                
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>  
-
+    <div style="margin-bottom:50px;"></div>
        
             <div class="container body-content">
                 @RenderBody()
