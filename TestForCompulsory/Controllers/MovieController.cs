@@ -26,8 +26,8 @@ namespace TestForCompulsory.Controllers
 
         public ActionResult Create()
         {
-
-            return View();
+            
+            return View(facade.GetGenresRepository().ReadAll());
         }
         [HttpPost]
         public ActionResult Create(Movie movie, HttpPostedFileBase file)
