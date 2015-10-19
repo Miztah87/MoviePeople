@@ -26,8 +26,9 @@ namespace TestForCompulsory.Controllers
 
         public ActionResult Create()
         {
-            
-            return View(facade.GetGenresRepository().ReadAll());
+            ShopContextConnection db = new ShopContextConnection();
+            ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
+            return View();
         }
         [HttpPost]
         public ActionResult Create(Movie movie, HttpPostedFileBase file)
@@ -64,7 +65,7 @@ namespace TestForCompulsory.Controllers
             return View(movie);
         }
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl,Genre")] Movie movie)
         {
 
             if (ModelState.IsValid)

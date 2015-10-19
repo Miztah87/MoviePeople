@@ -18,13 +18,14 @@ namespace TestProxy.Repository
         {
             using (var ctx = new ShopContextConnection())
             {
-                return ctx.Movies.ToList();
+                return ctx.Movies.Include("Genre").ToList();
             }
         }
         public void Add(Movie movie)
         {
             using (var ctx = new ShopContextConnection())
             {
+                ctx.Movies.Attach(movie);
                 ctx.Movies.Add(movie);
                 ctx.SaveChanges();
             }
@@ -68,6 +69,7 @@ namespace TestProxy.Repository
                 entry.Property(e => e.Year).IsModified = true;
                 
                 ctx.SaveChanges();
+
             }
         }
 
