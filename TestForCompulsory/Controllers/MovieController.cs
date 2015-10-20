@@ -34,6 +34,7 @@ namespace TestForCompulsory.Controllers
         public ActionResult Create(Movie movie, HttpPostedFileBase file)
         {
            
+
             facade.GetMovieRepository().Add(movie);
             return Redirect("Index");
         }
