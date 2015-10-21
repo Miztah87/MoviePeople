@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,8 +62,8 @@ namespace TestProxy.Repository
         {
             using (var ctx = new ShopContextConnection())
             {
-                movies = ReadAll();
 
+                //1.try
                 //var thisMovie = ctx.Movies.Attach(movie);
 
 
@@ -79,15 +80,18 @@ namespace TestProxy.Repository
 
                 //ctx.SaveChanges();
 
-                var dbMovie = FindMovie(movie.Id);
-                dbMovie.Title = movie.Title;
-                dbMovie.Price = movie.Price;
-                dbMovie.Year = movie.Year;
-                dbMovie.Description = movie.Description;
-                dbMovie.url = movie.url;
-                dbMovie.MovieCoverUrl = movie.MovieCoverUrl;
-                dbMovie.Genre = movie.Genre;
-
+                //2.try
+                //var dbMovie = FindMovie(movie.Id);
+                //dbMovie.Title = movie.Title;
+                //dbMovie.Price = movie.Price;
+                //dbMovie.Year = movie.Year;
+                //dbMovie.Description = movie.Description;
+                //dbMovie.url = movie.url;
+                //dbMovie.MovieCoverUrl = movie.MovieCoverUrl;
+                //dbMovie.Genre = movie.Genre;
+                ctx.Movies.Attach(movie);
+                ctx.Entry(movie).State = EntityState.Modified;
+                
                 ctx.SaveChanges();
 
 
