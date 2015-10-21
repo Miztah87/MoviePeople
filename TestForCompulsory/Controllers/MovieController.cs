@@ -74,14 +74,11 @@ namespace TestForCompulsory.Controllers
             {
                 
                 facade.GetMovieRepository().Edit(movie);
-                return RedirectToAction("Index", movie);
-            }
-            
-            
-
+                return RedirectToAction("Index");
+            }      
 
             //facade.GetMovieRepository().Edit(movie);
-            return Redirect("Index");
+            return View(movie);
 
         }
 
