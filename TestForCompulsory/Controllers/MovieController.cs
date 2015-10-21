@@ -68,13 +68,20 @@ namespace TestForCompulsory.Controllers
         [HttpPost]
         public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl,Genre")] Movie movie)
         {
-            facade.GetMovieRepository().Edit(movie);
+
+            ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
+            if (ModelState.IsValid)
+            {
+                
+                facade.GetMovieRepository().Edit(movie);
+                return RedirectToAction("Index");
+            }
             
-            return View(movie);
+            
 
 
             //facade.GetMovieRepository().Edit(movie);
-            //return Redirect("Index");
+            return View(movie);
 
         }
 

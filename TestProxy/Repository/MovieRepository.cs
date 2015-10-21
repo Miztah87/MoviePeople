@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,32 +62,40 @@ namespace TestProxy.Repository
         {
             using (var ctx = new ShopContextConnection())
             {
-                movies = ReadAll();
-
-                var thisMovie = ctx.Movies.Attach(movie);
 
 
-                var entry = ctx.Entry(thisMovie);
-                entry.Property(e => e.Title).IsModified = true;
-                entry.Property(e => e.Price).IsModified = true;
+               // var thisMovie = ctx.Movies.Attach(movie);
+
                 
-               entry.Property(e => e.Year).IsModified = true;
-                entry.Property(e => e.Description).IsModified = true;
-                entry.Property(e => e.url).IsModified = true;
-                entry.Property(e => e.MovieCoverUrl).IsModified = true;
-                entry.Property(e => e.Genre).IsModified = true;
+
+
+               // var entry = ctx.Entry(thisMovie);
+               // entry.Property(e => e.Title).IsModified = true;
+               // entry.Property(e => e.Price).IsModified = true;
+                
+               //entry.Property(e => e.Year).IsModified = true;
+               // entry.Property(e => e.Description).IsModified = true;
+               // entry.Property(e => e.url).IsModified = true;
+               // entry.Property(e => e.MovieCoverUrl).IsModified = true;
+               // entry.Property(e => e.Genre).IsModified = true;
+
+
+                //ctx.SaveChanges();
+
+                //2.try
+                var dbMovie = FindMovie(movie.Id);
+                dbMovie.Title = movie.Title;
+                dbMovie.Price = movie.Price;
+                dbMovie.Year = movie.Year;
+                dbMovie.Description = movie.Description;
+                dbMovie.url = movie.url;
+                dbMovie.MovieCoverUrl = movie.MovieCoverUrl;
+                dbMovie.Genre = movie.Genre;
+                ctx.Movies.Attach(dbMovie);
+                ctx.Entry(movie).State = EntityState.Modified;
 
 
                 ctx.SaveChanges();
-
-                //var dbMovie = FindMovie(movie.Id);
-                //dbMovie.Title = movie.Title;
-                //dbMovie.Price = movie.Price;
-                //dbMovie.Year = movie.Year;
-                //dbMovie.Description = movie.Description;
-                //dbMovie.url = movie.url;
-                //dbMovie.MovieCoverUrl = movie.MovieCoverUrl;
-                //dbMovie.Genre = movie.Genre;
 
                 //ctx.SaveChanges();
 
