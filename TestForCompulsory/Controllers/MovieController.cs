@@ -72,14 +72,10 @@ namespace TestForCompulsory.Controllers
             ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             if (ModelState.IsValid)
             {
-                
+
                 facade.GetMovieRepository().Edit(movie);
                 return RedirectToAction("Index");
             }
-            
-            
-
-
             //facade.GetMovieRepository().Edit(movie);
             return View(movie);
 
