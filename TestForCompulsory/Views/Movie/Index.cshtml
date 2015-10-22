@@ -53,10 +53,10 @@
         <td>
           
             <a href='@Url.Action("index", "Orders")'>
-                <input type='button' value='Buy' />
+                <input type='button' value='Buy' class="btn btn-success" />
             </a>
+            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary" }) |
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary" }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
