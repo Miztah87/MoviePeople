@@ -1,5 +1,6 @@
 ﻿@model TestProxy.DomainModel.Movie
 
+
 @{
     ViewBag.Title = "Create";
 }
@@ -67,10 +68,20 @@
             </div>
         </div>
 
+        @*<div class="form-group">
+            <label for="genreId">Genres</label>
+            <select class="form-control" id="genreId" name="Genre.Id">
+                @foreach (var item in Model.Movie.Genre)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>*@
+
         <div class="form-group">
             @Html.LabelFor(model => model.Genre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Genre.Id, (SelectList)ViewBag.Genres);
+                @Html.DropDownListFor(model => model.Genre.Id, (SelectList)ViewBag.Genres)
             </div>
         </div>
 

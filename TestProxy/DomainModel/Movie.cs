@@ -15,7 +15,7 @@ namespace TestProxy.DomainModel
         public int Id { get; set; }
 
        
-        [StringLength(15)]
+        [StringLength(50)]
         public string Title { get; set; }
         [DataType("Date")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

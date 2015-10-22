@@ -66,7 +66,6 @@ namespace TestProxy.Repository
                 //1.try
                 //var thisMovie = ctx.Movies.Attach(movie);
 
-
                 //var entry = ctx.Entry(thisMovie);
                 //entry.Property(e => e.Title).IsModified = true;
                 //entry.Property(e => e.Price).IsModified = true;
@@ -89,9 +88,22 @@ namespace TestProxy.Repository
                 //dbMovie.url = movie.url;
                 //dbMovie.MovieCoverUrl = movie.MovieCoverUrl;
                 //dbMovie.Genre = movie.Genre;
-                ctx.Movies.Attach(movie);
-                ctx.Entry(movie).State = EntityState.Modified;
-                
+
+                //ctx.Movies.Attach(movie);
+                // ctx.Genres.Attach(movie.Genre);
+                //ctx.Entry(movie).State = EntityState.Modified;
+
+                //A gift to Lars from KBTZ team. Enjoy!
+                var movieDB = ctx.Movies.FirstOrDefault(x => x.Id == movie.Id);
+                movieDB.Genre = ctx.Genres.FirstOrDefault(x => x.Id == movie.Genre.Id);
+                movieDB.Title = movie.Title;
+                movieDB.Price = movie.Price;
+                movieDB.Year = movie.Year;
+                movieDB.Description = movie.Description;
+                movieDB.url = movie.url;
+                movieDB.MovieCoverUrl = movie.MovieCoverUrl;
+
+
                 ctx.SaveChanges();
 
 
