@@ -16,12 +16,14 @@ namespace TestForCompulsory.Controllers
     {
         private ShopContextConnection db = new ShopContextConnection();
         Facade facade = new Facade();
+       
 
         // GET: Orders
-        public ActionResult Index()
+        public ActionResult Index([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl,Genre")] Movie movie)
         {
+
             
-            return View(db.Orders.ToList());
+            return View(movie);
         }
 
         // GET: Orders/Details/5

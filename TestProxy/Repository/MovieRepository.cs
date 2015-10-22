@@ -63,35 +63,7 @@ namespace TestProxy.Repository
             using (var ctx = new ShopContextConnection())
             {
 
-                //1.try
-                //var thisMovie = ctx.Movies.Attach(movie);
 
-                //var entry = ctx.Entry(thisMovie);
-                //entry.Property(e => e.Title).IsModified = true;
-                //entry.Property(e => e.Price).IsModified = true;
-                //// Problem with DateTime2 ?!? whut?!?
-                //entry.Property(e => e.Year).IsModified = true;
-                //entry.Property(e => e.Description).IsModified = true;
-                //entry.Property(e => e.url).IsModified = true;
-                //entry.Property(e => e.MovieCoverUrl).IsModified = true;
-                //entry.Property(e => e.Genre).IsModified = true;
-                ////
-
-                //ctx.SaveChanges();
-
-                //2.try
-                //var dbMovie = FindMovie(movie.Id);
-                //dbMovie.Title = movie.Title;
-                //dbMovie.Price = movie.Price;
-                //dbMovie.Year = movie.Year;
-                //dbMovie.Description = movie.Description;
-                //dbMovie.url = movie.url;
-                //dbMovie.MovieCoverUrl = movie.MovieCoverUrl;
-                //dbMovie.Genre = movie.Genre;
-
-                //ctx.Movies.Attach(movie);
-                // ctx.Genres.Attach(movie.Genre);
-                //ctx.Entry(movie).State = EntityState.Modified;
 
                 //A gift to Lars from KBTZ team. Enjoy!
                 var movieDB = ctx.Movies.FirstOrDefault(x => x.Id == movie.Id);
@@ -104,7 +76,10 @@ namespace TestProxy.Repository
                 movieDB.MovieCoverUrl = movie.MovieCoverUrl;
 
 
+
                 ctx.SaveChanges();
+
+                //ctx.SaveChanges();
 
 
             }
