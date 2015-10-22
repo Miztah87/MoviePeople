@@ -64,35 +64,17 @@ namespace TestProxy.Repository
             {
 
 
-               // var thisMovie = ctx.Movies.Attach(movie);
 
-                
+                //A gift to Lars from KBTZ team. Enjoy!
+                var movieDB = ctx.Movies.FirstOrDefault(x => x.Id == movie.Id);
+                movieDB.Genre = ctx.Genres.FirstOrDefault(x => x.Id == movie.Genre.Id);
+                movieDB.Title = movie.Title;
+                movieDB.Price = movie.Price;
+                movieDB.Year = movie.Year;
+                movieDB.Description = movie.Description;
+                movieDB.url = movie.url;
+                movieDB.MovieCoverUrl = movie.MovieCoverUrl;
 
-
-               // var entry = ctx.Entry(thisMovie);
-               // entry.Property(e => e.Title).IsModified = true;
-               // entry.Property(e => e.Price).IsModified = true;
-                
-               //entry.Property(e => e.Year).IsModified = true;
-               // entry.Property(e => e.Description).IsModified = true;
-               // entry.Property(e => e.url).IsModified = true;
-               // entry.Property(e => e.MovieCoverUrl).IsModified = true;
-               // entry.Property(e => e.Genre).IsModified = true;
-
-
-                //ctx.SaveChanges();
-
-                //2.try
-                var dbMovie = FindMovie(movie.Id);
-                dbMovie.Title = movie.Title;
-                dbMovie.Price = movie.Price;
-                dbMovie.Year = movie.Year;
-                dbMovie.Description = movie.Description;
-                dbMovie.url = movie.url;
-                dbMovie.MovieCoverUrl = movie.MovieCoverUrl;
-                dbMovie.Genre = movie.Genre;
-                ctx.Movies.Attach(dbMovie);
-                ctx.Entry(movie).State = EntityState.Modified;
 
 
                 ctx.SaveChanges();

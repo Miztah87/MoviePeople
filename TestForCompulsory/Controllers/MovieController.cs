@@ -69,7 +69,7 @@ namespace TestForCompulsory.Controllers
         public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl,Genre")] Movie movie)
         {
 
-            ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
+            //ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             if (ModelState.IsValid)
             {
 
