@@ -5,21 +5,22 @@
 }
 <div class="pushmenu pushmenu-left">
     <div style="padding-top:40px;">
-        <h3>Genre</h3>
-        <!-- Small button group -->
-        <div class="btn-group">
-            <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Small button <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                ...
-            </ul>
-        </div>
+       @using (Html.BeginForm("Index", "Movie"))
+       {
+        @*@Html.DropDownListFor(model => model.Id, (SelectList)ViewBag.SortByGenres);*@
+        <select onchange="this.form.submit()" name="genre">
+            <option value="">All</option>
+            @foreach (var item in Model)
+            {
+                <option value="@item.Genre.Name">@item.Genre.Name</option>
+            }
+        </select>
+        <input type="submit" value="Select" />
+       }
+          
     </div>
 
 </div>
-
-
  <div class="container" style=" width:100%!important; padding:0!important; ">
             <div id="carousel-example-generic" class="carousel slide " data-ride="carousel">
 

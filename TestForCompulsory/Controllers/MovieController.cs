@@ -17,19 +17,41 @@ namespace TestForCompulsory.Controllers
         private Facade facade = new Facade();
         private ShopContextConnection db = new ShopContextConnection();
         // GET: Movie
-        [Authorize]
-        public ActionResult Index()
+       
+        public ActionResult Index(string genre)
         {
             List<Movie> movies = facade.GetMovieRepository().ReadAll();
+            if(genre != null)
+            {
+                movies = movies.Where(x => x.Genre.Name.Equals(genre)).ToList();
+            }
             return View(movies);
         }
+        [HttpPost]
+        public ActionResult SortByGenre(string genre)
+        {
+            ViewBag.SortByGenres = new SelectList(db.Genres, "Id", "Name");
+            // selectedName = genre.Name;
 
+            //List<Movie> sortedMovies =new List<Movie>();
+            //List<Movie> movies = facade.GetMovieRepository().ReadAll();
+            //for(int i =0; i< movies.Count(); ++i)
+            //{
+            //    if (movies[i].Genre.Id == genre.Id)
+            //    {
+            //        sortedMovies.Add(movies[i]);
+            //    }
+            //}
+            return View();
+        }
+        [Authorize(Roles ="Admin")]
         public ActionResult Create()
         {
             ShopContextConnection db = new ShopContextConnection();
             ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             return View();
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Create(Movie movie, HttpPostedFileBase file)
         {
