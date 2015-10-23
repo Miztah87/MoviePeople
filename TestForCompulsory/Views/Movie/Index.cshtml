@@ -52,10 +52,9 @@
         </td>
         <td>
           
-            <a href='@Url.Action("index", "Orders")'>
-                <input type='submit' value='Buy' id="@item.Id"  title="item.Title" />
+         
 
-            </a>
+            @Html.ActionLink("Buy", "index", "Orders", new { id=item.Id }, new { @class = "btn btn-warning" })
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-warning" }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary" }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })

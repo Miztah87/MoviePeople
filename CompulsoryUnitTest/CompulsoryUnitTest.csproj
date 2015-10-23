@@ -65,14 +65,15 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
     <Compile Include="MovieTest.cs" />
     <Compile Include="OrderLineTest.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,7 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TestForCompulsory\TestForCompulsory.csproj">
-      <Project>{695703D1-DDA3-4663-BDFB-573D2A76DB93}</Project>
+      <Project>{695703d1-dda3-4663-bdfb-573d2a76db93}</Project>
       <Name>TestForCompulsory</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestProxy\TestProxy.csproj">

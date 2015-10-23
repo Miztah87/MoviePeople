@@ -19,11 +19,11 @@ namespace TestForCompulsory.Controllers
        
 
         // GET: Orders
-        public ActionResult Index([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl,Genre")] Movie movie)
+        public ActionResult Index([Bind(Include = "Id")] Movie movie)
         {
-
+            Movie moviee = db.Movies.Find(movie.Id);
             
-            return View(movie);
+            return View(moviee);
         }
 
         // GET: Orders/Details/5
