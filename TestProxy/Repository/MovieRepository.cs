@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace TestProxy.Repository
 {
     public class MovieRepository
     {
+        private List<Movie> movies;
         /// <summary>
         /// 
         /// </summary>
@@ -60,17 +62,41 @@ namespace TestProxy.Repository
         {
             using (var ctx = new ShopContextConnection())
             {
-                var thisMovie = ctx.Movies.Where(x => x.Id == movie.Id).FirstOrDefault();
-                
-                var entry = ctx.Entry(thisMovie);
-                entry.Property(e => e.Title).IsModified = true;
-                entry.Property(e => e.Price).IsModified = true;
-                // Problem with DateTime2 ?!? whut?!?
-                entry.Property(e => e.Year).IsModified = true;
-                
+
+
+
+                //A gift to Lars from KBTZ team. Enjoy!
+                var movieDB = ctx.Movies.FirstOrDefault(x => x.Id == movie.Id);
+                movieDB.Genre = ctx.Genres.FirstOrDefault(x => x.Id == movie.Genre.Id);
+                movieDB.Title = movie.Title;
+                movieDB.Price = movie.Price;
+                movieDB.Year = movie.Year;
+                movieDB.Description = movie.Description;
+                movieDB.url = movie.url;
+                movieDB.MovieCoverUrl = movie.MovieCoverUrl;
+
+
+
                 ctx.SaveChanges();
 
+                //ctx.SaveChanges();
+
+
             }
+        }
+
+        internal Movie FindMovie(int movieId)
+        {
+            movies = ReadAll();
+            /*foreach (var item in employees)
+            {
+                if (item.Id == employeeId) {
+                    return item;
+                }
+            }
+            return null;
+            */
+            return movies.FirstOrDefault(item => item.Id == movieId);
         }
 
     }

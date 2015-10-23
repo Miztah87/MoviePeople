@@ -47,7 +47,7 @@ namespace TestForCompulsory.Controllers
         [Authorize(Roles ="Admin")]
         public ActionResult Create()
         {
-            ShopContextConnection db = new ShopContextConnection();
+            
             ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             return View();
         }
@@ -75,7 +75,7 @@ namespace TestForCompulsory.Controllers
         [HttpGet]
         public ActionResult Edit(int? id)
         {
-
+            ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -91,17 +91,15 @@ namespace TestForCompulsory.Controllers
         public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl,Genre")] Movie movie)
         {
 
+            //ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
-                db.SaveChanges();
+
+                facade.GetMovieRepository().Edit(movie);
                 return RedirectToAction("Index");
             }
-            return View(movie);
-
-
             //facade.GetMovieRepository().Edit(movie);
-            //return Redirect("Index");
+            return View(movie);
 
         }
 

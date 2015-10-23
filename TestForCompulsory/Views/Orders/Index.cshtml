@@ -1,0 +1,73 @@
+﻿@model TestProxy.DomainModel.Movie
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Order Menu</h2>
+
+<p>Thanks for buying from us!
+    You bought this shit!</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieCoverUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        
+        <th></th>
+    </tr>
+
+   
+
+        <tr>
+
+            <td>
+                <img src="@Model.MovieCoverUrl" width="200" />
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Year.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Price)
+            </td>
+            
+            <td>
+
+        </tr>
+
+    
+
+
+    @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    
+
+
+
+</table>
+<div>
+    <a href='@Url.Action("index", "Home/index")'>
+        <input type='button' value='Continue' class="btn btn-success" />
+    </a>
+
+    <a href='@Url.Action("index", "Movie")'>
+        <input type='button' value='Cancel' class="btn btn-success" />
+    </a>
+</div>
