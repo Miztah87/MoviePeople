@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TestForCompulsory.Models;
 using TestProxy;
 using TestProxy.Context;
 using TestProxy.DomainModel;
@@ -14,12 +15,14 @@ namespace TestForCompulsory.Controllers
 {
     public class MovieController : Controller 
     {
+
         private Facade facade = new Facade();
         private ShopContextConnection db = new ShopContextConnection();
         // GET: Movie
        
         public ActionResult Index(string genre)
         {
+
             List<Movie> movies = facade.GetMovieRepository().ReadAll();
             if(genre != null)
             {
@@ -44,14 +47,14 @@ namespace TestForCompulsory.Controllers
             //}
             return View();
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize]
         public ActionResult Create()
         {
-            
+
             ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             return View();
         }
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Movie movie, HttpPostedFileBase file)
         {
