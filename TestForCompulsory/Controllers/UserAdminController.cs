@@ -14,7 +14,7 @@ using TestForCompulsory;
 
 namespace IdentitySample.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class UsersAdminController : Controller
     {
         public UsersAdminController()

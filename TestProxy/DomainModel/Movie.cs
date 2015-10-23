@@ -21,7 +21,8 @@ namespace TestProxy.DomainModel
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
        
         //[Range(1, 9000)]
-        public DateTime Year { get; set; }        
+        public DateTime Year { get; set; } 
+               
         public double Price { get; set; }
 
         public virtual Genre Genre { get; set; }

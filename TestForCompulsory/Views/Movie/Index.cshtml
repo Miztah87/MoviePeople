@@ -8,10 +8,11 @@
 
 
 <p>
-    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+    @*@if (Request.IsAuthenticated && User.IsInRole("Admin"))
     {
         @Html.ActionLink("Create New", "Create")
-    }
+    }*@
+    @Html.ActionLink("Create New", "Create")
    
 </p>
 <table class="table">

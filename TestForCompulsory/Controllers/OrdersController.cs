@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -22,7 +23,13 @@ namespace TestForCompulsory.Controllers
         public ActionResult Index([Bind(Include = "Id")] Movie movie)
         {
             Movie moviee = db.Movies.Find(movie.Id);
-            
+            string UserId = User.Identity.GetUserId();
+            var date = DateTime.Now; 
+            Order order = new Order();
+            order.UserId = UserId;
+            order.MovieId = moviee.Id;
+            order.OrderDate = date;
+            facade.GetOrderRepository().Add(order);
             return View(moviee);
         }
 
