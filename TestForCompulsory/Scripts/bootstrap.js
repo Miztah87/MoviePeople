@@ -326,11 +326,11 @@ if (typeof jQuery === 'undefined') {
 
   Carousel.VERSION  = '3.3.5'
 
-  Carousel.TRANSITION_DURATION = 600
+  Carousel.TRANSITION_DURATION = 2000
 
   Carousel.DEFAULTS = {
     interval: 5000,
-    pause: 'hover',
+    pause: 'false',
     wrap: true,
     keyboard: true
   }

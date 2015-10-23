@@ -1,0 +1,20 @@
+﻿@model  IEnumerable<TestProxy.DomainModel.Genre>
+
+@{
+    ViewBag.Title = "Sortings";
+}
+
+<h2>Genres</h2>
+
+@using (Html.BeginForm("Index", "Movie"))
+{
+    @*@Html.DropDownListFor(model => model.Id, (SelectList)ViewBag.SortByGenres);*@
+    <select onchange="this.form.submit()" name="genre">
+       <option value="" >All</option>
+         @foreach(var item in Model)
+        {
+            <option value="@item.Name">@item.Name</option>
+        }
+    </select>
+    <input type="submit" value="Select"  />
+}

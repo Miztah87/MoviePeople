@@ -23,6 +23,12 @@ namespace TestForCompulsory.Controllers
             return View(facade.GetGenresRepository().ReadAll());
         }
 
+        public PartialViewResult SortGenre()
+        {
+            List<Genre> genre = facade.GetGenresRepository().ReadAll();
+            return PartialView(genre);
+        }
+
         // GET: Genres/Details/5
         public ActionResult Details(int? id)
         {

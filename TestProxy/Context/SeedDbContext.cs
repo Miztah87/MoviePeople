@@ -8,7 +8,7 @@ using TestProxy.DomainModel;
 
 namespace TestProxy.Context
 {
-    class SeedDbContext : DbContext
+    public class SeedDbContext : DbContext
     {
         public SeedDbContext(): base("MovieShopDBConnectionString") 
         {

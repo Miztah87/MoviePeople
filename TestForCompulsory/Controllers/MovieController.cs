@@ -6,32 +6,60 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TestForCompulsory.Models;
 using TestProxy;
 using TestProxy.Context;
 using TestProxy.DomainModel;
 
 namespace TestForCompulsory.Controllers
 {
-    public class MovieController : Controller
+    public class MovieController : Controller 
     {
+
         private Facade facade = new Facade();
         private ShopContextConnection db = new ShopContextConnection();
         // GET: Movie
-        public ActionResult Index()
+       
+        public ActionResult Index(string genre)
         {
+
             List<Movie> movies = facade.GetMovieRepository().ReadAll();
+            if(genre != null)
+            {
+                movies = movies.Where(x => x.Genre.Name.Equals(genre)).ToList();
+            }
             return View(movies);
         }
+        [HttpPost]
+        public ActionResult SortByGenre(string genre)
+        {
+            ViewBag.SortByGenres = new SelectList(db.Genres, "Id", "Name");
+            // selectedName = genre.Name;
 
+            //List<Movie> sortedMovies =new List<Movie>();
+            //List<Movie> movies = facade.GetMovieRepository().ReadAll();
+            //for(int i =0; i< movies.Count(); ++i)
+            //{
+            //    if (movies[i].Genre.Id == genre.Id)
+            //    {
+            //        sortedMovies.Add(movies[i]);
+            //    }
+            //}
+            return View();
+        }
+        [Authorize]
         public ActionResult Create()
         {
 
+            ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             return View();
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Create(Movie movie, HttpPostedFileBase file)
         {
            
+
             facade.GetMovieRepository().Add(movie);
             return Redirect("Index");
         }
@@ -50,7 +78,7 @@ namespace TestForCompulsory.Controllers
         [HttpGet]
         public ActionResult Edit(int? id)
         {
-
+            ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -63,20 +91,18 @@ namespace TestForCompulsory.Controllers
             return View(movie);
         }
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl,Genre")] Movie movie)
         {
 
+            //ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
             if (ModelState.IsValid)
             {
-                db.Entry(movie).State = EntityState.Modified;
-                db.SaveChanges();
+
+                facade.GetMovieRepository().Edit(movie);
                 return RedirectToAction("Index");
             }
-            return View(movie);
-
-
             //facade.GetMovieRepository().Edit(movie);
-            //return Redirect("Index");
+            return View(movie);
 
         }
 
